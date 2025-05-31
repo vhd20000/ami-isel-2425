@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Benfica
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card class="welcome-card">
+    <img alt="Benfica" src="https://cdn-imgix.headout.com/media/images/5d1c0a425c15f13fefd241b06fc7e4fc-BenficaStadiumviewfromspectatorstand.jpg?auto=format&w=900&h=562.5&q=90&ar=16%3A10&crop=faces%2Ccenter&fit=crop" />
+    
+    <ion-card-header>
+      <ion-card-subtitle>SLB</ion-card-subtitle>
+      <ion-card-title>Welcome to the Glorious</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Sport Lisboa Benfica, commonly known as Benfica, is a sports club
+      based in Lisbon, Portugal. It is best known for the professional
+      football team playing in the Primeira Liga, where they are the most
+      successfull club in terms of titles won.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-title>About Benfica</ion-title>
+
+  <ion-list lines="none">
+    <ion-item href="https://www.slbenfica.pt/">
+      <img slot="start" class="ion-item-img" alt="benfica-logo"
+        src="https://media.slbenfica.pt/-/media/images/slb-logo-new.svg?v=638097287260000000" />
+      <ion-label>Official Website</ion-label>
+    </ion-item>
+    
+    <ion-item href="https://pt.wikipedia.org/wiki/Sport_Lisboa_e_Benfica">
+      <img slot="start" class="ion-item-img" alt="wikipedia-logo"
+        src="https://pt.wikipedia.org/static/images/icons/wikipedia.png" />
+      <ion-label>Wikipedia Page</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button size="small">
+    <ion-icon name="logo-ionic"></ion-icon>
+  </ion-fab-button>
+
+  <ion-fab-list side="top">
+    <ion-item href="https://ionicframework.com/docs/theming/basics">
+      <ion-label>Theme Your App</ion-label>
+      <ion-icon name="color-fill"></ion-icon>
+    </ion-item>
+
+    <ion-item href="https://ionicframework.com/docs/layout/structure">
+      <ion-label>Change Your App Layout</ion-label>
+      <ion-icon name="grid"></ion-icon>
+    </ion-item>
+
+    <ion-item href="https://ionicframework.com/docs/building/scaffolding">
+      <ion-label>Scaffold Out Your App</ion-label>
+      <ion-icon name="build"></ion-icon>
+    </ion-item>
+
+    <ion-item href="https://ionicframework.com/docs/">
+      <ion-label>Ionic Documentation</ion-label>
+      <ion-icon name="book"></ion-icon>
+    </ion-item>
+  </ion-fab-list>
+</ion-fab>

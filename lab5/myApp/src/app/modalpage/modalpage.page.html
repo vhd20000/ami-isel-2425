@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <button ion-button (click)="dismiss()">
+        Close
+      </button>
+    </ion-buttons>
+    <ion-title>Playing</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>{{value}}</h2>
+  <iframe [src]='sanitizer.bypassSecurityTrustResourceUrl(getValue())'
+    width="560" height="315" frameborder="0" webkitallowfullscreen
+    mozallowfullscreen allowfullscreen></iframe>
+</ion-content>

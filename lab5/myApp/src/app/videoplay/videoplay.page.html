@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tab3"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Playing</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <iframe width="560" height="315" frameborder="0"
+  webkitallowfullscreen mozallowfullscreen allowfullscreen
+  [src]='sanitizer.bypassSecurityTrustResourceUrl(getURL())'></iframe>
+</ion-content>
