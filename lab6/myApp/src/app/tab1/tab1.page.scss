@@ -1,0 +1,23 @@
+ion-toolbar {
+    display: flex;
+}
+
+ion-title {
+    float: left;
+}
+
+ion-buttons {
+    float: right;
+    padding-right: 1rem;
+}
+
+ion-buttons button {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
+.taskDone {
+    text-decoration-line: line-through;
+}
