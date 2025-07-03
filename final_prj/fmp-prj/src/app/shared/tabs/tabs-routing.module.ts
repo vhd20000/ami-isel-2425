@@ -9,19 +9,19 @@ const routes: Routes = [
     children: [
       {
         path: 'meal-plan',
-        loadChildren: () => import('../meal-plan/meal-plan.module').then(m => m.MealPlanPageModule)
+        loadChildren: () => import('../../pages/meal-plan/meal-plan.module').then(m => m.MealPlanPageModule)
       },
       {
         path: 'recepy-book',
-        loadChildren: () => import('../recepy-book/recepy-book.module').then(m => m.RecepyBookPageModule)
+        loadChildren: () => import('../../pages/recepy-book/recepy-book.module').then(m => m.RecepyBookPageModule)
       },
       {
         path: 'shopping-list',
-        loadChildren: () => import('../shopping-list/shopping-list.module').then(m => m.ShoppingListPageModule)
+        loadChildren: () => import('../../pages/shopping-list/shopping-list.module').then(m => m.ShoppingListPageModule)
       },
       {
         path: 'groups',
-        loadChildren: () => import('../groups/groups.module').then(m => m.GroupsPageModule)
+        loadChildren: () => import('../../pages/groups/groups.module').then(m => m.GroupsPageModule)
       },
       {
         path: '',
