@@ -3,17 +3,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ShoppingListPage } from './shopping-list.page';
-import { ExploreContainerComponentModule } from '../../shared/explore-container/explore-container.module';
 
 import { ShoppingListPageRoutingModule } from './shopping-list-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ExploreContainerComponentModule,
-    ShoppingListPageRoutingModule
+    ShoppingListPageRoutingModule,
+    SharedModule
   ],
   declarations: [ShoppingListPage]
 })
