@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import * as Ionic from '@ionic/angular';
 
-import { ExploreContainerComponent } from './explore-container/explore-container.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FloatingActionButtonComponent } from './floating-action-button/floating-action-button.component';
+import { ComingSoonNoticeComponent } from './coming-soon-notice/coming-soon-notice.component';
 
 @NgModule({
   imports: [
@@ -15,14 +15,14 @@ import { FloatingActionButtonComponent } from './floating-action-button/floating
     Ionic.IonicModule
   ],
   declarations: [
-    ExploreContainerComponent, 
-    NavbarComponent,
-    FloatingActionButtonComponent
-  ],
-  exports: [
-    ExploreContainerComponent, 
     NavbarComponent,
     FloatingActionButtonComponent,
+    ComingSoonNoticeComponent
+  ],
+  exports: [
+    NavbarComponent,
+    FloatingActionButtonComponent,
+    ComingSoonNoticeComponent,
     Ionic.IonFab,
     Ionic.IonFabButton,
     Ionic.IonIcon,
