@@ -1,7 +1,3 @@
 .navbar {
-    --background: $ion-background-color;
-}
-
-ion-menu-button {
-    color: var(--detail-color-1);
+    --background: var(--ion-background-color, #fff);
 }
