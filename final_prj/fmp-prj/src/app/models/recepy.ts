@@ -3,6 +3,7 @@ export class Recepy {
     public name: string = "";
     public mealType: MealType = MealType.LUNCH;
     public imageId?: string;
+    public image?: string;
 }
 
 enum MealType { LUNCH, DINNER }
