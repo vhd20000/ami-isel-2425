@@ -7,21 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'meal-plan',
-    loadChildren: () => import('./pages/meal-plan/meal-plan.module').then( m => m.MealPlanPageModule)
+    path: 'meal-detail/:id',
+    loadChildren: () => import('./pages/meal-detail/meal-detail.module').then(m => m.MealDetailPageModule)
   },
   {
-    path: 'recepy-book',
-    loadChildren: () => import('./pages/recepy-book/recepy-book.module').then( m => m.RecepyBookPageModule)
-  },
-  {
-    path: 'shopping-list',
-    loadChildren: () => import('./pages/shopping-list/shopping-list.module').then( m => m.ShoppingListPageModule)
-  },
-  {
-    path: 'groups',
-    loadChildren: () => import('./pages/groups/groups.module').then( m => m.GroupsPageModule)
-  },  {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
