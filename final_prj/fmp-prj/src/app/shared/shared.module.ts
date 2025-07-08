@@ -5,8 +5,9 @@ import { FormsModule } from '@angular/forms';
 import * as Ionic from '@ionic/angular';
 
 import { NavbarComponent } from './navbar/navbar.component';
-import { FloatingActionButtonComponent } from './floating-action-button/floating-action-button.component';
 import { ComingSoonNoticeComponent } from './coming-soon-notice/coming-soon-notice.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { MealPlanCardComponent } from './meal-plan-card/meal-plan-card.component';
 
 @NgModule({
   imports: [
@@ -16,13 +17,11 @@ import { ComingSoonNoticeComponent } from './coming-soon-notice/coming-soon-noti
   ],
   declarations: [
     NavbarComponent,
-    FloatingActionButtonComponent,
-    ComingSoonNoticeComponent
+    ComingSoonNoticeComponent,
+    CalendarComponent,
+    MealPlanCardComponent
   ],
   exports: [
-    NavbarComponent,
-    FloatingActionButtonComponent,
-    ComingSoonNoticeComponent,
     Ionic.IonFab,
     Ionic.IonFabButton,
     Ionic.IonIcon,
@@ -33,6 +32,10 @@ import { ComingSoonNoticeComponent } from './coming-soon-notice/coming-soon-noti
     Ionic.IonMenuButton,
     Ionic.IonTitle,
     Ionic.IonToolbar,
+    NavbarComponent,
+    ComingSoonNoticeComponent,
+    CalendarComponent,
+    MealPlanCardComponent
   ]
 })
 export class SharedModule { }
