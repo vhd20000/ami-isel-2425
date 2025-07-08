@@ -2,10 +2,8 @@
     --background: var(--primary-color);
 }
 
-ion-tab-button.tab-selected {
-    color: white;
-}
-
 ion-tab-button {
-    color: black;
+    --color: black;
+    --color-selected: white;
+    --ripple-color: var(--ion-color-primary);
 }
