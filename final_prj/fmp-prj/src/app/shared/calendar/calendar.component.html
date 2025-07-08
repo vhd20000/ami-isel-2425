@@ -1,0 +1,24 @@
+<div class="calendar">
+  <ion-header class="ion-no-border">
+    <ion-title class="ion-text-center"><b>{{ monthLabel }}</b></ion-title>
+  </ion-header>
+
+  <div>
+    <ion-card>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col *ngFor="let day of weekDays">
+              <b>{{ day }}</b>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col *ngFor="let date of weekDates">
+              {{ date }}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</div>
