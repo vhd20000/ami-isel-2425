@@ -15,11 +15,13 @@ export class MealPlanPage implements OnInit {
       recepies: [
         {
           name: "Esparguete à bolonhesa",
-          mealType: "Almoço"
+          mealType: "Almoço",
+          id: "1"
         },
         {
           name: "Caldeirada de peixe",
-          mealType: "Jantar"
+          mealType: "Jantar",
+          id: "2"
         },
       ],
     },
@@ -28,11 +30,13 @@ export class MealPlanPage implements OnInit {
       recepies: [
         {
           name: "Arroz de atum",
-          mealType: "Almoço"
+          mealType: "Almoço",
+          id: "3"
         },
         {
           name: "Jardineira de frango",
-          mealType: "Jantar"
+          mealType: "Jantar",
+          id: "4"
         },
       ],
     },
