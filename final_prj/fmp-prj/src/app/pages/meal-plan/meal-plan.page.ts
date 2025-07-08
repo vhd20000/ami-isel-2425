@@ -49,6 +49,32 @@ export class MealPlanPage implements OnInit {
         },
       ],
     },
+    {
+      date: new Date("7/10/2025"),
+      recepies: [
+        {
+          name: "Lasanha de carne",
+          mealType: "Almoço"
+        },
+        {
+          name: "Caldo verde",
+          mealType: "Jantar"
+        },
+      ],
+    },
+    {
+      date: new Date("7/11/2025"),
+      recepies: [
+        {
+          name: "Lasanha de carne",
+          mealType: "Almoço"
+        },
+        {
+          name: "Caldo verde",
+          mealType: "Jantar"
+        },
+      ],
+    },
   ];
 
   constructor() { }
