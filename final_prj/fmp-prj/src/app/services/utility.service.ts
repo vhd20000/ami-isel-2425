@@ -49,6 +49,11 @@ export class UtilityService {
 
     return months;
   }
+
+  getDateDay(date: Date, size: 'short' | 'long' = 'short'): string {
+    let dateDay = date.toLocaleString(LOCALE_STRING, { weekday: size });
+    return dateDay.charAt(0).toUpperCase() + dateDay.slice(1);
+  }
 }
 
 class Day {
