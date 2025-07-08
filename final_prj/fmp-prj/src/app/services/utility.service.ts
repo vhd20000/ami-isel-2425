@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 const LOCALE_STRING: string = 'pt-pt';
 const WEEK_DAYS: string[] = [ "Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb" ];
@@ -8,7 +9,7 @@ const WEEK_DAYS: string[] = [ "Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb" ]
 })
 export class UtilityService {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   getCurrentWeekDays(): Day[] {
     let week: Day[] = [];
@@ -54,6 +55,10 @@ export class UtilityService {
     let dateDay = date.toLocaleString(LOCALE_STRING, { weekday: size });
     return dateDay.charAt(0).toUpperCase() + dateDay.slice(1);
   }
+
+  redirectTo(page: string): void {
+    this.router.navigate([page]);
+  };
 }
 
 class Day {

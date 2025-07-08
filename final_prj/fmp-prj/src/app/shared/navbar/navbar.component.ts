@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { App } from '@capacitor/app';
 import { PopupComponent } from '../popup/popup.component';
 import { CLOSE_APP_HEADER, CLOSE_APP_SUB_HEADER, CLOSE_APP_SUB_MSG } from '../popup/popup.constants';
@@ -21,7 +20,7 @@ export class NavbarComponent {
   public popSubHeader = CLOSE_APP_SUB_HEADER;
   public popMsg = CLOSE_APP_SUB_MSG;
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   /**
    * -- PUBLIC METHODS
@@ -37,9 +36,5 @@ export class NavbarComponent {
 
   public exitApp(): void {
     App.exitApp();
-  };
-
-  public redirectTo(page: string): void {
-    this.router.navigate([page]);
   };
 }
