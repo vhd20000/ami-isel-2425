@@ -1,7 +1,3 @@
-// div.meal-plan-card {
-//     padding-top: 1rem;
-// }
-
 .meal-plan-card-title {
     padding-left: 1.5rem;
 }
@@ -9,4 +5,12 @@
 ion-card {
     --background: var(--primary-color-light);
     box-shadow: none !important;
+}
+
+ion-list.list-md {
+    background: var(--primary-color-light);
+}
+
+ion-item {
+    --background: var(--primary-color-light);
 }
