@@ -35,3 +35,16 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 // @import "@ionic/angular/css/palettes/dark.system.css";
+
+
+/**
+ * My styles
+ */
+
+ion-fab-button {
+    --background: var(--secondary-color);
+}
+
+.fab-icon {
+    color: black;
+}
