@@ -1,23 +1,52 @@
 <ion-menu contentId=menuId>
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Family Meal Planner</ion-title>
+  <ion-header class="ion-no-border">
+    <ion-toolbar class="side-menu">
+      <ion-title><b>Family Meal Planner</b></ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content class="ion-padding"><i>Conteúdo a ser acrescentado aqui</i></ion-content>
+
+  <ion-content class="ion-padding ion-no-border">
+    <ion-list lines="none">
+      <ion-menu-toggle autoHide="false">
+        <ion-item button>
+          <ion-icon name="settings-sharp" size="large"></ion-icon>
+          <ion-title>Definições</ion-title>
+        </ion-item>
+        <ion-item button>
+          <ion-icon name="help-circle" size="large"></ion-icon>
+          <ion-title>Ajuda</ion-title>
+        </ion-item>
+        <ion-item button>
+          <ion-icon name="information-circle" size="large"></ion-icon>
+          <ion-title>Sobre</ion-title>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+
+  <ion-footer class="ion-padding ion-no-border">
+    <ion-list lines="none">
+      <ion-menu-toggle autoHide="false">
+        <ion-item button (click)="logoutUser()">
+          <ion-icon name="power" size="large"></ion-icon>
+          <ion-title>Terminar sessão</ion-title>
+        </ion-item>
+        <ion-item button class="app-exit-button" (click)="exitApp()">
+          <ion-icon name="exit" size="large"></ion-icon>
+          <ion-title>Sair da aplicação</ion-title>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-footer>
 </ion-menu>
 
 <div id=menuId>
-  <ion-header class="ion-no-border">
     <ion-toolbar class="navbar">
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-buttons slot="end">
-        <ion-button>
-          <ion-icon slot="icon-only" ios="person-circle-outline" md="person-circle"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+      <ion-avatar slot="end">
+        <img alt="picture" [src]="userProfilePic" />
+      </ion-avatar>
     </ion-toolbar>
-  </ion-header>
 </div>

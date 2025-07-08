@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { App } from '@capacitor/app';
+
+const USER_PROFILE_PIC: string = "https://ionicframework.com/docs/img/demos/avatar.svg";
 
 @Component({
   selector: 'app-navbar',
@@ -6,14 +10,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
   standalone: false
 })
-export class NavbarComponent  implements OnInit {
+export class NavbarComponent {
 
-  constructor() {}
+  public userProfilePic: string = USER_PROFILE_PIC;
 
-  ngOnInit() {}
+  constructor(private router: Router) { }
 
-  toggleDarkMode(): void {
-    document.body.classList.toggle('dark');
+  /**
+   * -- PUBLIC METHODS
+   */
+
+  public redirectTo(page: string): void {
+    this.router.navigate([page]);
   };
 
+  public logoutUser(): void {
+
+  };
+
+  public exitApp(): void {
+    App.exitApp();
+  };
 }
