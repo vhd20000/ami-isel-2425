@@ -1,9 +1,11 @@
 <ion-content>
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Plano</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon class="fab-icon" name="pencil-sharp"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
+  <app-calendar></app-calendar>
 
-  <app-fab icon="pencil-outline"></app-fab>
+  <app-meal-plan-card *ngFor="let dayPlan of mealPlan" [date]="dayPlan.date" [recepies]="dayPlan.recepies"></app-meal-plan-card>
 </ion-content>
