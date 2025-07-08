@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { Recepy } from 'src/app/models/recepy';
 import { UtilityService } from 'src/app/services/utility.service';
 
@@ -24,6 +25,14 @@ export class MealPlanCardComponent  implements OnInit {
 
   ngOnInit() {
     this.dateDay = this.util.getDateDay(this.date, 'long');
+  }
+
+  public recepyDetailsHandler(recepy: Recepy) {
+    let recepyId = recepy.id;
+    console.log(recepyId);
+    if (recepyId) {
+      this.util.redirectTo('meal-detail/' + recepyId);
+    }
   }
 
 }

@@ -8,7 +8,7 @@
 
     <ion-card-content>
       <ion-list lines="none">
-        <ion-item *ngFor="let recepy of recepies">
+        <ion-item *ngFor="let recepy of recepies" (click)="recepyDetailsHandler(recepy)">
           <ion-thumbnail class="recepy-img" slot="start">
             <img alt="recepy" [src]="recepy.image ?? recepyPic" />
           </ion-thumbnail>
