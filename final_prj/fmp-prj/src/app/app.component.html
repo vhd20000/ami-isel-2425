@@ -4,4 +4,11 @@
   <ion-content>
     <ion-router-outlet></ion-router-outlet>
   </ion-content>
+
+  <app-popup 
+    [header]="popHeader"
+    [subHeader]="popSubHeader"
+    [message]="popMsg"
+    [popupActionFunction]="exitApp"
+  ></app-popup>
 </ion-app>

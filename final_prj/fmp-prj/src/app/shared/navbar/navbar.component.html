@@ -31,7 +31,7 @@
           <ion-icon name="power" size="large"></ion-icon>
           <ion-title>Terminar sessão</ion-title>
         </ion-item>
-        <ion-item button class="app-exit-button" (click)="exitApp()">
+        <ion-item button class="app-exit-button" (click)="openPopupHandler()">
           <ion-icon name="exit" size="large"></ion-icon>
           <ion-title>Sair da aplicação</ion-title>
         </ion-item>
@@ -50,3 +50,10 @@
       </ion-avatar>
     </ion-toolbar>
 </div>
+
+<app-popup 
+  [header]="popHeader"
+  [subHeader]="popSubHeader"
+  [message]="popMsg"
+  [popupActionFunction]="exitApp"
+></app-popup>

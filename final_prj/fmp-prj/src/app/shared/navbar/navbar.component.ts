@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { App } from '@capacitor/app';
+import { PopupComponent } from '../popup/popup.component';
+import { CLOSE_APP_HEADER, CLOSE_APP_SUB_HEADER, CLOSE_APP_SUB_MSG } from '../popup/popup.constants';
 
 const USER_PROFILE_PIC: string = "https://ionicframework.com/docs/img/demos/avatar.svg";
 
@@ -12,17 +14,22 @@ const USER_PROFILE_PIC: string = "https://ionicframework.com/docs/img/demos/avat
 })
 export class NavbarComponent {
 
+  @ViewChild(PopupComponent) popupComponent!: PopupComponent;
+
   public userProfilePic: string = USER_PROFILE_PIC;
+  public popHeader = CLOSE_APP_HEADER;
+  public popSubHeader = CLOSE_APP_SUB_HEADER;
+  public popMsg = CLOSE_APP_SUB_MSG;
 
   constructor(private router: Router) { }
 
   /**
    * -- PUBLIC METHODS
    */
-
-  public redirectTo(page: string): void {
-    this.router.navigate([page]);
-  };
+  
+  public openPopupHandler() {
+    this.popupComponent.openPopup();
+  }
 
   public logoutUser(): void {
 
@@ -30,5 +37,9 @@ export class NavbarComponent {
 
   public exitApp(): void {
     App.exitApp();
+  };
+
+  public redirectTo(page: string): void {
+    this.router.navigate([page]);
   };
 }
