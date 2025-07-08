@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Recepy } from 'src/app/models/recepy';
+import { UtilityService } from 'src/app/services/utility.service';
 
 const RECEPY_PIC: string = "https://ionicframework.com/docs/img/demos/thumbnail.svg";
+const DATE_FORMAT: string = "dd/MM/yyyy";
 
 @Component({
   selector: 'app-meal-plan-card',
@@ -11,13 +13,17 @@ const RECEPY_PIC: string = "https://ionicframework.com/docs/img/demos/thumbnail.
 })
 export class MealPlanCardComponent  implements OnInit {
 
-  public recepyPic: string = RECEPY_PIC;
-
   @Input() date: Date = new Date();
   @Input() recepies: Recepy[] = [];
+  
+  public recepyPic: string = RECEPY_PIC;
+  public dateFormat: string = DATE_FORMAT;
+  public dateDay: string = "";
 
-  constructor() { }
+  constructor(private util: UtilityService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.dateDay = this.util.getDateDay(this.date, 'long');
+  }
 
 }

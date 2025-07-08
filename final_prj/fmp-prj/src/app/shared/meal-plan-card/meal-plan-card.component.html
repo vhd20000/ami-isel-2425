@@ -2,24 +2,20 @@
   <ion-card>
     <ion-card-header>
       <ion-card-title class="meal-plan-card-title">
-        <b><i>Card Title</i></b>
+        <b><i>{{ dateDay }} ({{ date | date: dateFormat }})</i></b>
       </ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
       <ion-list lines="none">
-        <ion-item>
-          <ion-thumbnail slot="start">
-            <img alt="recepy" [src]="recepyPic" />
+        <ion-item *ngFor="let recepy of recepies">
+          <ion-thumbnail class="recepy-img" slot="start">
+            <img alt="recepy" [src]="recepy.image ?? recepyPic" />
           </ion-thumbnail>
-          <ion-label>Item</ion-label>
-        </ion-item>
-
-        <ion-item>
-          <ion-thumbnail slot="start">
-            <img alt="recepy" [src]="recepyPic" />
-          </ion-thumbnail>
-          <ion-label>Item</ion-label>
+          <div>
+            <ion-label class="recepy-meal">{{ recepy.mealType }}</ion-label>
+            <ion-title class="recepy-name"><b>{{ recepy.name }}</b></ion-title>
+          </div>
         </ion-item>
       </ion-list>
     </ion-card-content>

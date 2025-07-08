@@ -13,4 +13,23 @@ ion-list.list-md {
 
 ion-item {
     --background: var(--primary-color-light);
+    --padding-start: 0;
+}
+
+ion-thumbnail {
+    --border-radius: 0.5rem;
+    --size: 4rem;
+}
+
+ion-thumbnail.recepy-img {
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+ion-label.recepy-meal {
+    font-size: 0.95rem;
+}
+
+ion-title.recepy-name {
+    padding-left: 0;
+    font-size: 1rem;
 }
