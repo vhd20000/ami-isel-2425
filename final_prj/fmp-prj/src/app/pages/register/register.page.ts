@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-// import { FireauthService } from '../fireauth/fireauth.service';
+import { FireauthService } from '../../services/fireauth.service';
 import { Router } from '@angular/router';
+
+const LOGIN_PAGE_ROUTE: string = "/login";
 
 @Component({
   selector: 'app-register',
@@ -26,47 +28,48 @@ export class RegisterPage implements OnInit {
   };
 
   constructor(
-    // private authService: FireauthService,
+    private authService: FireauthService,
     private formBuilder: FormBuilder,
     private router: Router
   ) { }
 
   ngOnInit() {
-    // this.validations_form = this.formBuilder.group({
-    //   email: new FormControl(
-    //     '', 
-    //     Validators.compose([
-    //       Validators.required,
-    //       Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-    //     ])
-    //   ),
-    //   password: new FormControl(
-    //     '', 
-    //     Validators.compose([
-    //       Validators.minLength(5),
-    //       Validators.required
-    //     ])
-    //   ),
-    // });
+    this.validations_form = this.formBuilder.group({
+      email: new FormControl(
+        '', 
+        Validators.compose([
+          Validators.required,
+          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        ])
+      ),
+      password: new FormControl(
+        '', 
+        Validators.compose([
+          Validators.minLength(5),
+          Validators.required
+        ])
+      ),
+    });
   }
 
   tryRegister(value: any) {
-    // this.authService.doRegister(value)
-    //   .then(
-    //     res => {
-    //       console.log(res);
-    //       this.errorMessage = "";
-    //       this.successMessage = "Your account has been created. Please log in.";
-    //     }, 
-    //     err => {
-    //       console.log(err);
-    //       this.errorMessage = err.message;
-    //       this.successMessage = "";
-    //     }
-    //   );
+    this.authService.doRegister(value)
+      .then(
+        res => {
+          console.log(res);
+          // this.errorMessage = "";
+          // this.successMessage = "Your account has been created. Please log in.";
+          this.goLoginPage();
+        }, 
+        err => {
+          console.log(err);
+          this.errorMessage = err.message;
+          // this.successMessage = "";
+        }
+      );
   }
 
   goLoginPage() {
-    this.router.navigate(["/login"]);
+    this.router.navigate([LOGIN_PAGE_ROUTE]);
   }
 }

@@ -1,20 +1,36 @@
-.error-message {
-    color: var(--ion-color-danger);
+ion-toolbar {
+    --background: var(--primary-color);
+    --color: white;
 }
 
 .success-message {
     color: var(--ion-color-success);
 }
 
-.go-to-login {
-    text-align: center;
-    margin-top: 20px;
+.form-content {
+    padding: 1rem;
 }
 
-.submit-btn {
-    margin-top: 40px;
+ion-title.page-title {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 2rem;
+}
+
+.form div.password-field {
+    margin: 1rem 0;
+}
+
+.error-message {
+    color: var(--ion-color-danger);
 }
 
 a:hover {
     cursor: pointer;
+}
+
+ion-img {
+    margin-right: 1rem;
+    width: 1rem;
+    height: auto;
 }
