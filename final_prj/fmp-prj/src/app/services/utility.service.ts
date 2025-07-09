@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { GetOptions, Preferences, SetOptions } from '@capacitor/preferences';
 
+const USER_ACCOUNT_ID_KEY_NAME = "accountId";
 const LOCALE_STRING: string = 'pt-pt';
 const WEEK_DAYS: string[] = [ "Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb" ];
 
@@ -10,6 +12,28 @@ const WEEK_DAYS: string[] = [ "Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb" ]
 export class UtilityService {
 
   constructor(private router: Router) { }
+
+  /**
+   * CACHE METHODS
+   */
+
+  saveAccountIdInCache(id: string): void {
+    let data: SetOptions = { key: USER_ACCOUNT_ID_KEY_NAME, value: id };
+    Preferences.set(data);
+  }
+
+  async readAccountIdFromCache(): Promise<string | null> {
+    let getOptions: GetOptions = { key: USER_ACCOUNT_ID_KEY_NAME };
+    return Preferences.get(getOptions).then(e => e.value);
+  }
+
+  clearCache(): void {
+    Preferences.clear();
+  }
+
+  /**
+   * DATE METHODS
+   */
 
   getCurrentWeekDays(): Day[] {
     let week: Day[] = [];
@@ -55,6 +79,10 @@ export class UtilityService {
     let dateDay = date.toLocaleString(LOCALE_STRING, { weekday: size });
     return dateDay.charAt(0).toUpperCase() + dateDay.slice(1);
   }
+
+  /**
+   * ROUTING METHODS
+   */
 
   redirectTo(page: string): void {
     this.router.navigate([page]);
