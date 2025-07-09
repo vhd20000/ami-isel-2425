@@ -1,16 +1,41 @@
+.form-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 1rem;
+}
+
+ion-title.page-title {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 2rem;
+}
+
+.form div.password-field {
+    margin: 1rem 0;
+}
+
 .error-message {
     color: var(--ion-color-danger);
 }
 
 .go-to-register {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 1.25rem;
 }
 
-.submit-btn {
-    margin-top: 40px;
+.sign-in-options {
+    margin-top: 2rem;
 }
 
 a:hover {
     cursor: pointer;
+}
+
+ion-img {
+    margin-right: 1rem;
+    width: 1rem;
+    height: auto;
 }

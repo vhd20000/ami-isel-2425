@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-// import { FireauthService } from '../fireauth/fireauth.service';
+import { FireauthService } from '../../services/fireauth.service';
 import { Router } from '@angular/router';
+
+const GOOGLE_LOGO_IMAGE: string = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png";
+const APP_MAIN_PAGE_ROUTE: string = "/tabs";
+const REGIST_PAGE_ROUTE: string = "/register";
 
 @Component({
   selector: 'app-login',
@@ -11,10 +15,10 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  validations_form: FormGroup = {} as FormGroup;
-  errorMessage: string = "";
-
-  validation_messages = {
+  public googleLogoImage: string = GOOGLE_LOGO_IMAGE;
+  public validations_form: FormGroup = {} as FormGroup;
+  public errorMessage: string = "";
+  public validation_messages = {
     'email': [
       { type: 'required', message: 'Email is required.' },
       { type: 'pattern', message: 'Please enter a valid email.' }
@@ -26,44 +30,44 @@ export class LoginPage implements OnInit {
   };
 
   constructor(
-    // private authService: FireauthService,
+    private fireauthService: FireauthService,
     private formBuilder: FormBuilder,
     private router: Router
   ) { }
 
   ngOnInit() {
-    // this.validations_form = this.formBuilder.group({
-    //   email: new FormControl(
-    //     '', 
-    //     Validators.compose([
-    //       Validators.required,
-    //       Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-    //     ])
-    //   ),
-    //   password: new FormControl(
-    //     '', 
-    //     Validators.compose([
-    //       Validators.minLength(5), 
-    //       Validators.required
-    //     ])
-    //   )
-    // });
+    this.validations_form = this.formBuilder.group({
+      email: new FormControl(
+        '', 
+        Validators.compose([
+          Validators.required,
+          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        ])
+      ),
+      password: new FormControl(
+        '', 
+        Validators.compose([
+          Validators.minLength(5), 
+          Validators.required
+        ])
+      )
+    });
   }
 
   tryLogin(value: any) {
-  //   this.authService.doLogin(value)
-  //     .then(
-  //       res => {
-  //         this.router.navigate(["/tabs"]);
-  //       }, 
-  //       err => {
-  //         this.errorMessage = err.message;
-  //         console.log(err);
-  //       }
-  //     );
+    this.fireauthService.doLogin(value)
+      .then(
+        res => {
+          this.router.navigate([APP_MAIN_PAGE_ROUTE]);
+        }, 
+        err => {
+          this.errorMessage = err.message;
+          console.log(err);
+        }
+      );
   }
 
   goRegisterPage() {
-    this.router.navigate(["/register"]);
+    this.router.navigate([REGIST_PAGE_ROUTE]);
   }
 }
