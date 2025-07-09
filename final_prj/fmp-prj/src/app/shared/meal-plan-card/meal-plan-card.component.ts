@@ -3,8 +3,9 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { Recepy } from 'src/app/models/recepy';
 import { UtilityService } from 'src/app/services/utility.service';
 
-const RECEPY_PIC: string = "https://ionicframework.com/docs/img/demos/thumbnail.svg";
 const DATE_FORMAT: string = "dd/MM/yyyy";
+const MEAL_DETAIL_PAGE_ROUTE: string = "meal-detail";
+const RECEPY_PIC: string = "https://ionicframework.com/docs/img/demos/thumbnail.svg";
 
 @Component({
   selector: 'app-meal-plan-card',
@@ -31,7 +32,7 @@ export class MealPlanCardComponent  implements OnInit {
     let recepyId = recepy.id;
     console.log(recepyId);
     if (recepyId) {
-      this.util.redirectTo('meal-detail/' + recepyId);
+      this.util.redirectTo(`${MEAL_DETAIL_PAGE_ROUTE}/${recepyId}`);
     }
   }
 
