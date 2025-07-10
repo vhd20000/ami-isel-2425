@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { FireauthService } from '../../services/fireauth.service';
 import { Router } from '@angular/router';
+import { UtilityService } from 'src/app/services/utility.service';
 
 const LOGIN_PAGE_ROUTE: string = "/login";
+const REGIST_SUCCESS_MSG: string = "Your account has been created";
 
 @Component({
   selector: 'app-register',
@@ -30,7 +32,8 @@ export class RegisterPage implements OnInit {
   constructor(
     private authService: FireauthService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private util: UtilityService
   ) { }
 
   ngOnInit() {
@@ -57,14 +60,12 @@ export class RegisterPage implements OnInit {
       .then(
         res => {
           console.log(res);
-          // this.errorMessage = "";
-          // this.successMessage = "Your account has been created. Please log in.";
+          this.util.openToast(REGIST_SUCCESS_MSG);
           this.goLoginPage();
         }, 
         err => {
           console.log(err);
           this.errorMessage = err.message;
-          // this.successMessage = "";
         }
       );
   }

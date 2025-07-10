@@ -4,7 +4,7 @@
             <b>Family Meal Plan</b>
         </ion-title>
     
-        <form class="form" [formGroup]="validations_form" (ngSubmit)="tryLogin(validations_form.value)">
+        <form class="form" [formGroup]="validations_form" (ngSubmit)="tryLoginWithEmailAndPassword(validations_form.value)">
             <div>
                 <ion-input 
                     label="Email" 
@@ -50,7 +50,7 @@
                 <ion-button expand="block" type="submit" [disabled]="!validations_form.valid">
                     Sign In
                 </ion-button>
-                <ion-button class="google-btn" expand="block" [disabled]="!validations_form.valid">
+                <ion-button class="google-btn" expand="block" (click)="tryLoginWithGoogle(validations_form.value)">
                     <ion-img [src]="googleLogoImage"></ion-img>
                     Sign in with Google
                 </ion-button>
