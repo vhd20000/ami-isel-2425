@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FireService } from './fire.service';
 import { Auth } from '@angular/fire/auth';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signOut, signInWithPopup, getAuth } from '@firebase/auth';
 import { UtilityService } from './utility.service';
 
 @Injectable({
@@ -12,11 +12,12 @@ export class FireauthService {
   constructor(
     private fireService: FireService,
     private util: UtilityService,
-    public afAuth: Auth
+    public afAuth: Auth,
+    // public provider: GoogleAuthProvider
   ) {}
 
   async getCachedAccountId(): Promise<string | null> {
-    return this.util.readAccountIdFromCache();
+    return this.util.readUidFromCache();
   }
 
   doRegister(value: any) {
@@ -31,7 +32,20 @@ export class FireauthService {
 
   doLogin(value: any) {
     return new Promise<any>((resolve, reject) => {
-      signInWithEmailAndPassword(this.afAuth, value.email, value.password)
+      const auth = getAuth();
+      signInWithEmailAndPassword(auth, value.email, value.password)
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        );
+    });
+  }
+  
+  doLoginWithGoogle(value: any) {
+    return new Promise<any>((resolve, reject) => {
+      const auth = getAuth();
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(auth, provider)
         .then(
           res => resolve(res),
           err => reject(err)
