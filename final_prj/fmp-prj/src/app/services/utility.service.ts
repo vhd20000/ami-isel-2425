@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { GetOptions, Preferences, SetOptions } from '@capacitor/preferences';
+import { ToastComponent } from '../shared/toast/toast.component';
+import { ToastController } from '@ionic/angular';
 
 const USER_ACCOUNT_ID_KEY_NAME = "accountId";
 const LOCALE_STRING: string = 'pt-pt';
@@ -14,15 +16,24 @@ export class UtilityService {
   constructor(private router: Router) { }
 
   /**
+   * TOAST METHODS
+   */
+  openToast(msg: string, duration:number = 1500) {
+    let toastController: ToastController = new ToastController(); 
+    let toast: ToastComponent = new ToastComponent(toastController);
+    toast.presentToast(msg, duration);
+  }
+
+  /**
    * CACHE METHODS
    */
 
-  saveAccountIdInCache(id: string): void {
-    let data: SetOptions = { key: USER_ACCOUNT_ID_KEY_NAME, value: id };
+  storeUidInCache(uid: string): void {
+    let data: SetOptions = { key: USER_ACCOUNT_ID_KEY_NAME, value: uid };
     Preferences.set(data);
   }
 
-  async readAccountIdFromCache(): Promise<string | null> {
+  async readUidFromCache(): Promise<string | null> {
     let getOptions: GetOptions = { key: USER_ACCOUNT_ID_KEY_NAME };
     return Preferences.get(getOptions).then(e => e.value);
   }
