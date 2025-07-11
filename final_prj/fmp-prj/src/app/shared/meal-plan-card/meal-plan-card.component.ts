@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { Timestamp } from 'firebase/firestore';
 import { Recepy } from 'src/app/models/recepy';
 import { UtilityService } from 'src/app/services/utility.service';
 
@@ -15,16 +16,19 @@ const RECEPY_PIC: string = "https://ionicframework.com/docs/img/demos/thumbnail.
 })
 export class MealPlanCardComponent  implements OnInit {
 
-  @Input() date: Date = new Date();
+  @Input() timestamp: Timestamp | null = null;
   @Input() recepies: Recepy[] = [];
   
   public recepyPic: string = RECEPY_PIC;
   public dateFormat: string = DATE_FORMAT;
+  public date: Date = new Date();
   public dateDay: string = "";
+
 
   constructor(private util: UtilityService) { }
 
   ngOnInit() {
+    this.date = this.util.timestampToDate(this.timestamp!);
     this.dateDay = this.util.getDateDay(this.date, 'long');
   }
 
