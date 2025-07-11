@@ -1,0 +1,17 @@
+ion-toolbar {
+    --padding-top: 5rem;
+    --color: var(--detail-color-1);
+}
+
+ion-list {
+    padding: 0;
+}
+
+ion-searchbar {
+    --box-shadow: none !important;
+    --color: var(--detail-color-1) !important;
+}
+
+ion-reorder.reorder-selected {
+    box-shadow: none !important;
+}
