@@ -1,9 +1,9 @@
 export class Recepy {
     public id: string = "";
-    public name: string = "";
-    public mealType: MealType = MealType.LUNCH;
+    public recepyName: string = "";
+    public mealType: string = "";
     public imageId?: string;
     public image?: string;
+    public servings?: string;
+    public prepTimeMins?: number;
 }
-
-enum MealType { LUNCH, DINNER }
