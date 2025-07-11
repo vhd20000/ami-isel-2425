@@ -1,11 +1,11 @@
 <ion-content>
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button>
+    <ion-fab-button (click)="util.openToast('Brevemente ...')">
       <ion-icon class="fab-icon" name="pencil-sharp"></ion-icon>
     </ion-fab-button>
   </ion-fab>
   
   <app-calendar></app-calendar>
 
-  <app-meal-plan-card *ngFor="let dayPlan of mealPlan" [date]="dayPlan.date" [recepies]="dayPlan.recepies"></app-meal-plan-card>
+  <app-meal-plan-card *ngFor="let dayPlan of mealPlan.plan" [timestamp]="dayPlan.date" [recepies]="dayPlan.recepies"></app-meal-plan-card>
 </ion-content>
