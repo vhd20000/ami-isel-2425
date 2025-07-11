@@ -1,0 +1,76 @@
+.meal-plan-card-title {
+    padding-left: 1.5rem;
+}
+
+ion-card {
+    --background: var(--primary-color-light);
+    box-shadow: none !important;
+}
+
+ion-list.list-md {
+    background: var(--primary-color-light);
+}
+
+ion-item {
+    --background: var(--primary-color-light);
+    --padding-start: 0;
+}
+
+ion-thumbnail {
+    --border-radius: 0.5rem;
+    --size: 5rem;
+}
+
+ion-thumbnail.recepy-img {
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+ion-title.recepy-name {
+    padding-bottom: 0.8rem;
+    padding-left: 0;
+    font-size: 1rem;
+}
+
+ion-label.recepy-info {
+    font-size: 0.95rem;
+}
+
+ion-fab {
+    top: 0.2rem;
+
+    .card-options-button {
+        --background: transparent;
+        --color: var(--detail-color-1);
+        --box-shadow: none !important;
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-top: 0;
+    }
+    
+    .card-options-list {
+        min-width: 0;
+        
+        ion-fab-button {
+            --background: var(--warning-color);
+            --color: white;
+            --box-shadow: none !important;
+            width: 2.5rem;
+            height: 2.5rem;
+            margin-top: 1rem;
+        }
+    }
+}
+
+ion-item {
+    --inner-padding-end: 0;
+}
+
+.sort-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin-left: 0;
+    font-size: 1.35rem;
+    --color: var(--detail-color-1);
+}
