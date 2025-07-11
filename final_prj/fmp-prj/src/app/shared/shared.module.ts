@@ -10,6 +10,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { MealPlanCardComponent } from './meal-plan-card/meal-plan-card.component';
 import { PopupComponent } from './popup/popup.component';
 import { ToastComponent } from './toast/toast.component';
+import { RecepyCardComponent } from './recepy-card/recepy-card.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { ToastComponent } from './toast/toast.component';
     CalendarComponent,
     MealPlanCardComponent,
     PopupComponent,
-    ToastComponent
+    ToastComponent,
+    RecepyCardComponent
   ],
   exports: [
     Ionic.IonFab,
@@ -41,7 +43,8 @@ import { ToastComponent } from './toast/toast.component';
     CalendarComponent,
     MealPlanCardComponent,
     PopupComponent,
-    ToastComponent
+    ToastComponent,
+    RecepyCardComponent
   ]
 })
 export class SharedModule { }
