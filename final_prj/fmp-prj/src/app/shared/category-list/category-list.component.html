@@ -1,0 +1,8 @@
+<div class="category-container">
+  <div class="category-entry" *ngFor="let category of categories">
+    <p>{{ category }}</p>
+    <ion-button class="delete-category-btn" size="small" shape="round" *ngIf="!displayMode" (click)="removeEntry(category)">
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+    </ion-button>
+  </div>
+</div>
