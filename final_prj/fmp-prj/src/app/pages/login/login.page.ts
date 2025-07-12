@@ -3,11 +3,12 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { FireauthService } from '../../services/fireauth.service';
 import { Router } from '@angular/router';
 import { UtilityService } from 'src/app/services/utility.service';
+import { FireService } from 'src/app/services/fire.service';
+import { EMAIL_VALIDATION_PATTERN, ERROR_DISPLAY_TIMEOUT, FAILED_LOGIN_ERROR_MSG, INVALID_EMAIL_MSG, INVALID_PASSWORD_MSG, PASSWORD_MIN_LENGTH, REQUIRED_EMAIL_MSG, REQUIRED_PASSWORD_MSG } from '../auth.constants';
+import { Auth } from '@angular/fire/auth';
 
-const GOOGLE_LOGO_IMAGE: string = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png";
 const APP_MAIN_PAGE_ROUTE: string = "/tabs";
 const REGIST_PAGE_ROUTE: string = "/register";
-const ERROR_DISPLAY_TIMEOUT: number = 3000;
 
 @Component({
   selector: 'app-login',
@@ -17,17 +18,18 @@ const ERROR_DISPLAY_TIMEOUT: number = 3000;
 })
 export class LoginPage implements OnInit {
 
-  public googleLogoImage: string = GOOGLE_LOGO_IMAGE;
+  public showPassword: boolean = false;
+  public showEyeBtn: boolean = false;
   public validations_form: FormGroup = {} as FormGroup;
   public errorMessage: string = "";
   public validation_messages = {
     'email': [
-      { type: 'required', message: 'Email is required.' },
-      { type: 'pattern', message: 'Please enter a valid email.' }
+      { type: 'required', message: REQUIRED_EMAIL_MSG },
+      { type: 'pattern', message: INVALID_EMAIL_MSG }
     ],
     'password': [
-      { type: 'required', message: 'Password is required.' },
-      { type: 'minlength', message: 'Password must be at least 5 characters long.' }
+      { type: 'required', message: REQUIRED_PASSWORD_MSG },
+      { type: 'minlength', message: INVALID_PASSWORD_MSG }
     ]
   };
 
@@ -35,7 +37,8 @@ export class LoginPage implements OnInit {
     private fireauthService: FireauthService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private util: UtilityService
+    private util: UtilityService,
+    private afAuth: Auth
   ) { }
 
   ngOnInit() {
@@ -44,43 +47,62 @@ export class LoginPage implements OnInit {
         '', 
         Validators.compose([
           Validators.required,
-          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+          Validators.pattern(EMAIL_VALIDATION_PATTERN)
         ])
       ),
       password: new FormControl(
         '', 
         Validators.compose([
-          Validators.minLength(5), 
+          Validators.minLength(PASSWORD_MIN_LENGTH), 
           Validators.required
         ])
       )
     });
   }
 
-  tryLoginWithEmailAndPassword(value: any) {
-    this.tryLogin(value, this.fireauthService.doLogin);
-  }
+  /**
+   * PUBLIC METHODS
+   */
 
-  tryLoginWithGoogle(value: any) {
-    this.tryLogin(value, this.fireauthService.doLoginWithGoogle);
-  }
-
-  tryLogin(value: any, loginFunc: (e: any) => Promise<any>) {
-    loginFunc(value)
+  public tryLoginWithEmailAndPassword(value: any) {
+    this.fireauthService.doLoginWithEmailAndPassword(value)
       .then(
         res => {
+          console.log("res [doLoginWithEmailAndPassword]: ", res);
+          // this.util.storeUserDataInCache(res.user);
           this.router.navigate([APP_MAIN_PAGE_ROUTE]);
-          this.util.storeUidInCache(res.user.uid)
         }, 
         err => {
-          this.errorMessage = err.message;
+          this.errorMessage = FAILED_LOGIN_ERROR_MSG;
           setTimeout(() => { this.errorMessage = "" }, ERROR_DISPLAY_TIMEOUT);
           console.log(err);
         }
       );
   }
 
-  goRegisterPage() {
+  public tryLoginWithGoogle(value: any) {
+    this.util.openToast("deactivated functionality");
+    // this.fireauthService.doLoginWithGoogle(value)
+    //   .then(
+    //     res => {
+    //       // let uid = res.user.uid;
+    //       // this.util.storeUidInCache(uid);
+    //       // FireService.setCurrentUserId(uid);
+    //       this.router.navigate([APP_MAIN_PAGE_ROUTE]);
+    //     }, 
+    //     err => {
+    //       this.errorMessage = FAILED_LOGIN_ERROR_MSG;
+    //       setTimeout(() => { this.errorMessage = "" }, ERROR_DISPLAY_TIMEOUT);
+    //       console.log(err);
+    //     }
+    //   );
+  }
+
+  public goRegisterPage() {
     this.router.navigate([REGIST_PAGE_ROUTE]);
+  }
+
+  public togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 }

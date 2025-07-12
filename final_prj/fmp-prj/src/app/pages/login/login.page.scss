@@ -10,7 +10,7 @@
 ion-title.page-title {
     text-align: center;
     padding: 2rem 0;
-    font-size: 2rem;
+    font-size: 1.75rem;
 }
 
 .form div.password-field {
@@ -19,6 +19,7 @@ ion-title.page-title {
 
 .error-message {
     color: var(--ion-color-danger);
+    font-size: 0.9rem;
 }
 
 .go-to-register {
@@ -30,12 +31,26 @@ ion-title.page-title {
     margin-top: 2rem;
 }
 
+.sign-in-btn {
+    --background: var(--primary-color);
+    box-shadow: none !important;
+}
+
+.google-btn {
+    --background: var(--primary-color);
+    box-shadow: none !important;
+}
+
 a:hover {
     cursor: pointer;
 }
 
-ion-img {
-    margin-right: 1rem;
-    width: 1rem;
-    height: auto;
+ion-icon {
+    margin-right: 0.75rem;
+}
+
+hr {
+  border: none;
+  border-top: 0.125rem solid var(--detail-color-1);
+  margin: 1.5rem 0;
 }
