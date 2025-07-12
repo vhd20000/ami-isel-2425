@@ -1,36 +1,49 @@
 <ion-content>
-  <ion-toolbar *ngIf="!reorderEntries">
-    <ion-buttons slot="primary" *ngIf="!isSearchbarOpened">
-      <ion-button (click)="toggleSearchbar()">
-        <ion-icon slot="icon-only" name="search"></ion-icon>
-      </ion-button>
-      <ion-button (click)="toggleReorderItems()">
-        <ion-icon slot="icon-only" name="filter"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button class="fab-btn-no-shadow" (click)="util.redirectTo(addRecepyFormPage)">
+      <ion-icon class="fab-icon-color" name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
-    <ion-buttons *ngIf="isSearchbarOpened">
-      <ion-searchbar class="recepies-searchbar" [debounce]="200" (ionInput)="handleInput($event)" [placeholder]="searchbarPlaceholder"></ion-searchbar>
-      <ion-button (click)="toggleSearchbar()">
-        <ion-icon slot="icon-only" name="chevron-forward"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+  <div class="recepy-book-info-container" *ngIf="recepyBook && recepyBook.length < 1">
+    <strong>Não tem receitas registadas ! 😱</strong>
+    <p><i>Pode registar algumas através do botão '+'</i></p>
+  </div>
 
-  <ion-toolbar *ngIf="reorderEntries">
-    <ion-title>Reordenar receitas</ion-title>
-    <ion-buttons slot="primary">
-      <ion-button (click)="toggleReorderItems()">
-        <ion-icon slot="icon-only" name="close"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+  <div *ngIf="recepyBook && recepyBook.length > 0">
+    <ion-toolbar *ngIf="!reorderEntries">
+      <ion-buttons slot="primary" *ngIf="!isSearchbarOpened">
+        <ion-button (click)="toggleSearchbar()">
+          <ion-icon slot="icon-only" name="search"></ion-icon>
+        </ion-button>
+        <ion-button (click)="toggleReorderItems()">
+          <ion-icon slot="icon-only" name="filter"></ion-icon>
+        </ion-button>
+      </ion-buttons>
 
-  <ion-list>
-    <ion-reorder-group [disabled]="!reorderEntries" (ionItemReorder)="handleReorder($any($event))">
-      <ion-reorder *ngFor="let recepy of showRecepies">
-        <app-recepy-card [recepy]="recepy" [isReorderModeActive]="reorderEntries"></app-recepy-card>
-      </ion-reorder>
-    </ion-reorder-group>
-  </ion-list>
+      <ion-buttons *ngIf="isSearchbarOpened">
+        <ion-searchbar class="recepies-searchbar" [debounce]="200" (ionInput)="handleInput($event)" [placeholder]="searchbarPlaceholder"></ion-searchbar>
+        <ion-button (click)="toggleSearchbar()">
+          <ion-icon slot="icon-only" name="chevron-forward"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+
+    <ion-toolbar *ngIf="reorderEntries">
+      <ion-title>Reordenar receitas</ion-title>
+      <ion-buttons slot="primary">
+        <ion-button (click)="toggleReorderItems()">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+
+    <ion-list>
+      <ion-reorder-group [disabled]="!reorderEntries" (ionItemReorder)="util.handleReorder($any($event))">
+        <ion-reorder *ngFor="let recepy of showRecepies">
+          <app-recepy-card [recepy]="recepy" [isReorderModeActive]="reorderEntries"></app-recepy-card>
+        </ion-reorder>
+      </ion-reorder-group>
+    </ion-list>
+  </div>
 </ion-content>
