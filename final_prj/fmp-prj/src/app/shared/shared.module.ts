@@ -11,6 +11,8 @@ import { MealPlanCardComponent } from './meal-plan-card/meal-plan-card.component
 import { PopupComponent } from './popup/popup.component';
 import { ToastComponent } from './toast/toast.component';
 import { RecepyCardComponent } from './recepy-card/recepy-card.component';
+import { ItemListComponent } from './item-list/item-list.component';
+import { CategoryListComponent } from './category-list/category-list.component';
 
 @NgModule({
   imports: [
@@ -25,7 +27,9 @@ import { RecepyCardComponent } from './recepy-card/recepy-card.component';
     MealPlanCardComponent,
     PopupComponent,
     ToastComponent,
-    RecepyCardComponent
+    RecepyCardComponent,
+    ItemListComponent,
+    CategoryListComponent
   ],
   exports: [
     Ionic.IonFab,
@@ -44,7 +48,9 @@ import { RecepyCardComponent } from './recepy-card/recepy-card.component';
     MealPlanCardComponent,
     PopupComponent,
     ToastComponent,
-    RecepyCardComponent
+    RecepyCardComponent,
+    ItemListComponent,
+    CategoryListComponent
   ]
 })
 export class SharedModule { }
