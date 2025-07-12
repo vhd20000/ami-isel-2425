@@ -43,8 +43,13 @@
 
 ion-fab-button {
     --background: var(--secondary-color);
+    --ripple-color: black;
 }
 
-.fab-icon {
+.fab-icon-color {
     color: black;
+}
+
+.fab-btn-no-shadow {
+    --box-shadow: none !important;
 }
