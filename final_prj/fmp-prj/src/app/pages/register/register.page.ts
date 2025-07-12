@@ -3,9 +3,9 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { FireauthService } from '../../services/fireauth.service';
 import { Router } from '@angular/router';
 import { UtilityService } from 'src/app/services/utility.service';
+import { EMAIL_VALIDATION_PATTERN, ERROR_DISPLAY_TIMEOUT, FAILED_LOGIN_ERROR_MSG, FAILED_REGIST_ERROR_MSG, INVALID_EMAIL_MSG, INVALID_PASSWORD_MSG, PASSWORD_MIN_LENGTH, REGIST_SUCCESS_MSG, REQUIRED_EMAIL_MSG, REQUIRED_PASSWORD_MSG } from '../auth.constants';
 
 const LOGIN_PAGE_ROUTE: string = "/login";
-const REGIST_SUCCESS_MSG: string = "Your account has been created";
 
 @Component({
   selector: 'app-register',
@@ -16,16 +16,15 @@ const REGIST_SUCCESS_MSG: string = "Your account has been created";
 export class RegisterPage implements OnInit {
   validations_form: FormGroup = {} as FormGroup;
   errorMessage: string = "";
-  successMessage: string = "";
 
   validation_messages = {
     'email': [
-      { type: 'required', message: 'Email is required.' },
-      { type: 'pattern', message: 'Enter a valid email.' }
+      { type: 'required', message: REQUIRED_EMAIL_MSG },
+      { type: 'pattern', message: INVALID_EMAIL_MSG }
     ],
     'password': [
-      { type: 'required', message: 'Password is required.' },
-      { type: 'minlength', message: 'Password must be at least 5 characters long.' }
+      { type: 'required', message: REQUIRED_PASSWORD_MSG },
+      { type: 'minlength', message: INVALID_PASSWORD_MSG }
     ]
   };
 
@@ -42,13 +41,13 @@ export class RegisterPage implements OnInit {
         '', 
         Validators.compose([
           Validators.required,
-          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+          Validators.pattern(EMAIL_VALIDATION_PATTERN)
         ])
       ),
       password: new FormControl(
         '', 
         Validators.compose([
-          Validators.minLength(5),
+          Validators.minLength(PASSWORD_MIN_LENGTH),
           Validators.required
         ])
       ),
@@ -56,16 +55,16 @@ export class RegisterPage implements OnInit {
   }
 
   tryRegister(value: any) {
-    this.authService.doRegister(value)
+    this.authService.doRegisterWithEmailAndPassword(value)
       .then(
         res => {
-          console.log(res);
           this.util.openToast(REGIST_SUCCESS_MSG);
           this.goLoginPage();
         }, 
         err => {
+          this.errorMessage = FAILED_REGIST_ERROR_MSG;
+          setTimeout(() => { this.errorMessage = "" }, ERROR_DISPLAY_TIMEOUT);
           console.log(err);
-          this.errorMessage = err.message;
         }
       );
   }

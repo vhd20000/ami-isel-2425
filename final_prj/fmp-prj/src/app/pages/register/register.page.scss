@@ -3,8 +3,9 @@ ion-toolbar {
     --color: white;
 }
 
-.success-message {
-    color: var(--ion-color-success);
+.error-message {
+    color: var(--ion-color-danger);
+    font-size: 0.9rem;
 }
 
 .form-content {
