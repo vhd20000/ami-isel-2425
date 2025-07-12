@@ -32,11 +32,4 @@ export class RecepyCardComponent  implements OnInit {
     // this.deleteRecepyById();
   }
 
-  public handleReorder(event: CustomEvent<ItemReorderEventDetail>) {
-    // Finish the reorder and position the item in the DOM based on
-    // where the gesture ended. This method can also be called directly
-    // by the reorder group
-    event.detail.complete();
-  }
-
 }
