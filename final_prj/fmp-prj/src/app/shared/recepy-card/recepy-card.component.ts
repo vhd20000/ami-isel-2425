@@ -18,7 +18,7 @@ export class RecepyCardComponent  implements OnInit {
 
   public recepyPic: string = RECEPY_PIC;
 
-  constructor(private util: UtilityService) { }
+  constructor(public util: UtilityService) { }
 
   ngOnInit() {}
 

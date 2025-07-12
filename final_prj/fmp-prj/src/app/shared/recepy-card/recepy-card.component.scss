@@ -41,7 +41,6 @@ ion-fab {
     .card-options-button {
         --background: transparent;
         --color: var(--detail-color-1);
-        --box-shadow: none !important;
         width: 2.5rem;
         height: 2.5rem;
         margin-top: 0;
@@ -53,7 +52,6 @@ ion-fab {
         ion-fab-button {
             --background: var(--warning-color);
             --color: white;
-            --box-shadow: none !important;
             width: 2.5rem;
             height: 2.5rem;
             margin-top: 1rem;
