@@ -41,7 +41,6 @@ export class NavbarComponent {
   public logoutUser(): void {
     this.authService.doLogout()
       .then(res => {
-        this.util.clearCache();
         this.router.navigate([LOGIN_PAGE_ROUTE]);
       }, err => {
         console.log(err);
