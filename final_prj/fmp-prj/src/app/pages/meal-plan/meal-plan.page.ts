@@ -90,7 +90,7 @@ export class MealPlanPage implements OnInit {
     private fireService: FireService,
     public util: UtilityService,
   ) {
-    fireService.getMealPlan().then(mealPlan => {
+    fireService.getUserMealPlan().then(mealPlan => {
       console.log(mealPlan);
       if (!mealPlan) return;
       this.mealPlan = mealPlan;
