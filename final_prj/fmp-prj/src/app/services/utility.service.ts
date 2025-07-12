@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { GetOptions, Preferences, SetOptions } from '@capacitor/preferences';
-import { ToastComponent } from '../shared/toast/toast.component';
-import { ToastController } from '@ionic/angular';
+import { ToastComponent, ToastPosition } from '../shared/toast/toast.component';
+import { ItemReorderEventDetail, ToastController } from '@ionic/angular';
+import { User } from 'firebase/auth';
+import { Timestamp } from 'firebase/firestore';
 
-const USER_ACCOUNT_ID_KEY_NAME = "accountId";
 const LOCALE_STRING: string = 'pt-pt';
 const WEEK_DAYS: string[] = [ "Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb" ];
+const TOAST_DEFAULT_DURATION: number = 1500;
 
 @Injectable({
   providedIn: 'root'
@@ -18,28 +20,18 @@ export class UtilityService {
   /**
    * TOAST METHODS
    */
-  openToast(msg: string, duration:number = 1500) {
-    let toastController: ToastController = new ToastController(); 
+  openToast(msg: string, options?: { duration?: number, position?: ToastPosition}): void {
+    let toastController: ToastController = new ToastController();
     let toast: ToastComponent = new ToastComponent(toastController);
-    toast.presentToast(msg, duration);
-  }
 
-  /**
-   * CACHE METHODS
-   */
+    let duration: number = options?.duration ?? TOAST_DEFAULT_DURATION;
+    let position: ToastPosition = options?.position ?? ToastPosition.BOTTOM;
 
-  storeUidInCache(uid: string): void {
-    let data: SetOptions = { key: USER_ACCOUNT_ID_KEY_NAME, value: uid };
-    Preferences.set(data);
-  }
+    console.log("msg: ", msg);
+    console.log("duration: ", duration);
+    console.log("position: ", position);
 
-  async readUidFromCache(): Promise<string | null> {
-    let getOptions: GetOptions = { key: USER_ACCOUNT_ID_KEY_NAME };
-    return Preferences.get(getOptions).then(e => e.value);
-  }
-
-  clearCache(): void {
-    Preferences.clear();
+    toast.presentToast(msg, duration, position);
   }
 
   /**
@@ -91,6 +83,10 @@ export class UtilityService {
     return dateDay.charAt(0).toUpperCase() + dateDay.slice(1);
   }
 
+  timestampToDate(timestamp: Timestamp) {
+    return new Date(timestamp.seconds * 1000);
+  }
+
   /**
    * ROUTING METHODS
    */
@@ -98,6 +94,24 @@ export class UtilityService {
   redirectTo(page: string): void {
     this.router.navigate([page]);
   };
+
+  /**
+   * MISC METHODS
+   */
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  handleReorder(event: CustomEvent<ItemReorderEventDetail>) {
+    // Finish the reorder and position the item in the DOM based on
+    // where the gesture ended. This method can also be called directly
+    // by the reorder group
+    event.detail.complete();
+  }
+
+  sanitizeString(str: string) {
+    return str.trim().replace(/ +/g, " ");
+  }
 }
 
 class Day {
