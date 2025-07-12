@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FireService } from './fire.service';
-import { Auth } from '@angular/fire/auth';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signOut, signInWithPopup, getAuth } from '@firebase/auth';
+import { Auth, signInWithCredential } from '@angular/fire/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signOut, getAuth, signInWithRedirect, UserCredential, setPersistence, browserLocalPersistence, User, updateCurrentUser, reload, signInWithCustomToken, reauthenticateWithCredential, OAuthCredential } from '@firebase/auth';
 import { UtilityService } from './utility.service';
 
 @Injectable({
@@ -13,14 +13,9 @@ export class FireauthService {
     private fireService: FireService,
     private util: UtilityService,
     public afAuth: Auth,
-    // public provider: GoogleAuthProvider
   ) {}
 
-  async getCachedAccountId(): Promise<string | null> {
-    return this.util.readUidFromCache();
-  }
-
-  doRegister(value: any) {
+  doRegisterWithEmailAndPassword(value: any) {
     return new Promise<any>((resolve, reject) => {
       createUserWithEmailAndPassword(this.afAuth, value.email, value.password)
         .then(
@@ -30,40 +25,36 @@ export class FireauthService {
     });
   }
 
-  doLogin(value: any) {
+  doLoginWithEmailAndPassword(value: any) {
     return new Promise<any>((resolve, reject) => {
-      const auth = getAuth();
-      signInWithEmailAndPassword(auth, value.email, value.password)
+      signInWithEmailAndPassword(this.afAuth, value.email, value.password)
         .then(
-          res => resolve(res),
+          res => resolve(res), 
           err => reject(err)
         );
     });
   }
   
   doLoginWithGoogle(value: any) {
-    return new Promise<any>((resolve, reject) => {
-      const auth = getAuth();
-      const provider = new GoogleAuthProvider();
-      signInWithPopup(auth, provider)
-        .then(
-          res => resolve(res),
-          err => reject(err)
-        );
-    });
+    // return new Promise<any>((resolve, reject) => {
+    //   const auth = getAuth();
+    //   const provider = new GoogleAuthProvider();
+    //   provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+    //   signInWithRedirect(auth, provider)
+    //     .then(
+    //       res => resolve(res),
+    //       err => reject(err)
+    //     );
+    // });
   }
 
   doLogout() {
     return new Promise<any>((resolve, reject) => {
       signOut(this.afAuth)
-        .then(res => {
-          console.log("User successfully logged out !")
-          resolve(res);
-        })
-        .catch(err => {
-          console.log("Logout ERROR: ", err);
-          reject(err);
-        });
+        .then(
+          res => resolve(res),
+          err => reject(err),
+        )
     });
   }
 }
