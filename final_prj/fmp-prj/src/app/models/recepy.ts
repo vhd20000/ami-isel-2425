@@ -1,6 +1,6 @@
 export class Recepy {
     public id: string = "";
-    public recepyName: string = "";
+    public name: string = "";
     public mealType: string = "";
     public imageId?: string;
     public image?: string;
