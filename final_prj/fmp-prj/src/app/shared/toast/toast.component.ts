@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 
-const TOAST_POSITION: 'bottom' = 'bottom';
-
 @Component({
   selector: 'app-toast',
   templateUrl: './toast.component.html',
@@ -15,13 +13,18 @@ export class ToastComponent  implements OnInit {
 
   ngOnInit() {}
 
-  async presentToast(msg: string, duration: number = 1500) {
+  async presentToast(msg: string, duration: number, position: ToastPosition) {
     const toast = await this.toastController.create({
       message: msg,
       duration: duration,
-      position: TOAST_POSITION,
+      position: position,
     });
-
     await toast.present();
   }
+}
+
+export enum ToastPosition {
+  TOP = 'top',
+  MIDDLE = 'middle',
+  BOTTOM = 'bottom',
 }
