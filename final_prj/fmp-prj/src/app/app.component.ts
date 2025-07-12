@@ -3,6 +3,7 @@ import { App } from '@capacitor/app';
 import { IonRouterOutlet, Platform } from '@ionic/angular';
 import { PopupComponent } from './shared/popup/popup.component';
 import { CLOSE_APP_HEADER, CLOSE_APP_SUB_HEADER, CLOSE_APP_SUB_MSG } from './shared/popup/popup.constants';
+import { UtilityService } from './services/utility.service';
 
 const BACK_BUTTON_EVENT_PRIORITY: number = -1;
 
@@ -21,6 +22,7 @@ export class AppComponent {
     public popMsg = CLOSE_APP_SUB_MSG;
 
   constructor(
+    private util: UtilityService,
     private platform: Platform,
     @Optional() private routerOutlet?: IonRouterOutlet
   ) {
@@ -35,7 +37,9 @@ export class AppComponent {
    */
 
   private backButtonHandler() {
-    if (!this.routerOutlet?.canGoBack()) {
+    let canGoBack: boolean = this.routerOutlet?.canGoBack() ?? false;
+    this.util.openToast(`can go back ? ${canGoBack.toString()}`);
+    if (!canGoBack) {
       this.popupComponent.openPopup();
     }
   }
