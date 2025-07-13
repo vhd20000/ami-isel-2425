@@ -5,7 +5,6 @@ import { Recepy } from 'src/app/models/recepy';
 import { UtilityService } from 'src/app/services/utility.service';
 
 const DATE_FORMAT: string = "dd/MM/yyyy";
-const MEAL_DETAIL_PAGE_ROUTE: string = "meal-detail";
 const RECEPY_PIC: string = "https://ionicframework.com/docs/img/demos/thumbnail.svg";
 
 @Component({
@@ -35,9 +34,6 @@ export class MealPlanCardComponent  implements OnInit {
   public recepyDetailsHandler(recepy: Recepy) {
     let recepyId = recepy.id;
     console.log(recepyId);
-    if (recepyId) {
-      this.util.redirectTo(`${MEAL_DETAIL_PAGE_ROUTE}/${recepyId}`);
-    }
   }
 
 }

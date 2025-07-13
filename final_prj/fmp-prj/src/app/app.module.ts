@@ -18,7 +18,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyC1WTO1ubC6kP92PBGiIQUQB4RoZo_pL20",
   authDomain: "ami-fmp-prj.firebaseapp.com",
   projectId: "ami-fmp-prj",

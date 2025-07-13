@@ -9,17 +9,14 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'meal-detail/:id',
-    loadChildren: () => import('./pages/meal-detail/meal-detail.module').then(m => m.MealDetailPageModule)
-  },
-  {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
-  },  {
+  },
+  {
     path: 'recepy-form',
     loadChildren: () => import('./pages/recepy-form/recepy-form.module').then( m => m.RecepyFormPageModule)
   }

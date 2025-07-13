@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FireService } from 'src/app/services/fire.service';
+import { FireauthService } from 'src/app/services/fireauth.service';
+import { UtilityService } from 'src/app/services/utility.service';
 
-const CANCEL_BUTTON_TEXT = "Cancel";
+const CANCEL_BUTTON_TEXT = "Cancelar";
 const ACTION_BUTTON_TEXT = "OK";
 
 @Component({
@@ -21,7 +25,12 @@ export class PopupComponent  implements OnInit {
   public alertButtons: any[] = [];
   public isOpen = false;
 
-  constructor() {
+  constructor(
+    private router: Router,
+    private util: UtilityService,
+    private fireService: FireService,
+    private authService: FireauthService,
+  ) {
     this.alertButtons = [
       {
         text: CANCEL_BUTTON_TEXT,

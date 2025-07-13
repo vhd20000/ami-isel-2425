@@ -66,7 +66,6 @@ export class LoginPage implements OnInit {
     this.fireauthService.doLoginWithEmailAndPassword(value)
       .then(
         res => {
-          console.log("res [doLoginWithEmailAndPassword]: ", res);
           this.router.navigate([APP_MAIN_PAGE_ROUTE]);
         }, 
         err => {
@@ -77,22 +76,18 @@ export class LoginPage implements OnInit {
       );
   }
 
-  public tryLoginWithGoogle(value: any) {
-    this.util.openToast("deactivated functionality");
-    // this.fireauthService.doLoginWithGoogle(value)
-    //   .then(
-    //     res => {
-    //       // let uid = res.user.uid;
-    //       // this.util.storeUidInCache(uid);
-    //       // FireService.setCurrentUserId(uid);
-    //       this.router.navigate([APP_MAIN_PAGE_ROUTE]);
-    //     }, 
-    //     err => {
-    //       this.errorMessage = FAILED_LOGIN_ERROR_MSG;
-    //       setTimeout(() => { this.errorMessage = "" }, ERROR_DISPLAY_TIMEOUT);
-    //       console.log(err);
-    //     }
-    //   );
+  public tryLoginWithGoogle() {
+    this.fireauthService.doLoginWithGoogle()
+      .then(
+        res => {
+          this.router.navigate([APP_MAIN_PAGE_ROUTE]);
+        }, 
+        err => {
+          this.errorMessage = FAILED_LOGIN_ERROR_MSG;
+          setTimeout(() => { this.errorMessage = "" }, ERROR_DISPLAY_TIMEOUT);
+          console.log(err);
+        }
+      );
   }
 
   public goRegisterPage() {

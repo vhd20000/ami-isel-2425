@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "180610397513",
+    "project_id": "ami-fmp-prj",
+    "storage_bucket": "ami-fmp-prj.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180610397513:android:b74dd032e4837762c8d698",
+        "android_client_info": {
+          "package_name": "com.example.app1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "180610397513-5rk5fjg7t41pmr2q0bugudjmcfqppqej.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.app1",
+            "certificate_hash": "efe15e4ab948e14b59c3c4b61b42659efe3f7310"
+          }
+        },
+        {
+          "client_id": "180610397513-9g3s4955ffdtvatbp5uja75pr7987jqk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh0Hzg0YtUhm8WQzvVJtKua1ICyb1ab-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "180610397513-9g3s4955ffdtvatbp5uja75pr7987jqk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

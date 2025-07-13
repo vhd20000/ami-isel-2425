@@ -17,10 +17,6 @@ const UPLOAD_RECEPY_SUCCESS_MSG = "Receita criada com sucesso !";
 const UPLOAD_RECEPY_FAIL_MSG = "Ocorreu um erro ao criar a receita.";
 const RECEPY_BOOK_PAGE_ROUTE = "/tabs/recepy-book"
 
-// FIXME
-const ADD_RECEPY_SUCCESS_NOTIFICATION_TITLE_MSG = "";
-const ADD_RECEPY_SUCCESS_NOTIFICATION_BODY_MSG = "";
-
 @Component({
   selector: 'app-recepy-form',
   templateUrl: './recepy-form.page.html',
@@ -31,28 +27,9 @@ export class RecepyFormPage implements OnInit {
 
   @ViewChild('categoryToAdd') categoryToAdd!: ElementRef;
 
-  public categories: string[] = [
-    "Lorem ipsum",
-    "Mollis Risus",
-    "Elit",
-    "Consecutor",
-    "Test :)",
-    "Other",
-    "And other",
-    "Plus",
-  ];
-
-  public ingrdients: string[] = [
-    "Artigo 1",
-    "Artigo 2",
-    "Artigo 3",
-  ];
-
-  public steps: string[] = [
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "Integer posuere elit vel libero malesuada elementum",
-    "Quisque ultricies euismod metus",
-  ];
+  public categories: string[] = [];
+  public ingrdients: string[] = [];
+  public steps: string[] = [];
 
   public image?: RecepyImage;
 
