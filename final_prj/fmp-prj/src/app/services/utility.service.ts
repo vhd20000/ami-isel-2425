@@ -5,6 +5,8 @@ import { ToastComponent, ToastPosition } from '../shared/toast/toast.component';
 import { ItemReorderEventDetail, ToastController } from '@ionic/angular';
 import { User } from 'firebase/auth';
 import { Timestamp } from 'firebase/firestore';
+import { Camera, CameraResultType } from '@capacitor/camera';
+import { Filesystem } from '@capacitor/filesystem';
 
 const LOCALE_STRING: string = 'pt-pt';
 const WEEK_DAYS: string[] = [ "Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb" ];
@@ -96,6 +98,25 @@ export class UtilityService {
   };
 
   /**
+   * CAMERA METHODS
+   */
+  async takePicture() {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.DataUrl
+    });
+
+    let data = image.dataUrl;
+    if (!data) return;
+
+    // Cast raw image data to Blob 
+    let blob = await fetch(data).then(r => r.blob());
+
+    return { img: data, blob: blob };
+  };
+
+  /**
    * MISC METHODS
    */
   delay(ms: number) {
@@ -111,6 +132,10 @@ export class UtilityService {
 
   sanitizeString(str: string) {
     return str.trim().replace(/ +/g, " ");
+  }
+
+  generateUniqueId() {
+    return Date.now().toString(36) + Math.random().toString(36).substr(2);
   }
 }
 
