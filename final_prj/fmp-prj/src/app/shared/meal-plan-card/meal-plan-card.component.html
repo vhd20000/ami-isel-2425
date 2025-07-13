@@ -10,7 +10,7 @@
       <ion-list lines="none">
         <ion-item *ngFor="let recepy of recepies" (click)="recepyDetailsHandler(recepy)">
           <ion-thumbnail class="recepy-img" slot="start">
-            <img alt="recepy" [src]="recepy.image ?? recepyPic" />
+            <img alt="recepy" [src]="!recepy.imageURL || recepy.imageURL==='' ? recepyPic : recepy.imageURL" />
           </ion-thumbnail>
           <div>
             <ion-label class="recepy-meal">{{ recepy.mealType }}</ion-label>
