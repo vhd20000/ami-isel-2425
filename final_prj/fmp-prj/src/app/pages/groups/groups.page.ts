@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Platform } from '@ionic/angular';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-groups',
@@ -8,9 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupsPage implements OnInit {
 
-  constructor() { }
+  constructor(public util: UtilityService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }
