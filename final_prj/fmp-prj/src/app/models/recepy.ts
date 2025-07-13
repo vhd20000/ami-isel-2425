@@ -11,3 +11,8 @@ export class Recepy {
     public image?: string;
     public mealType?: string;
 }
+
+export class RecepyImage {
+    public img: string = "";
+    public blob: Blob = new Blob();
+}
