@@ -13,6 +13,7 @@ import { ToastComponent } from './toast/toast.component';
 import { RecepyCardComponent } from './recepy-card/recepy-card.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { CategoryListComponent } from './category-list/category-list.component';
     ToastComponent,
     RecepyCardComponent,
     ItemListComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    LoadingComponent
   ],
   exports: [
     Ionic.IonFab,
@@ -50,7 +52,8 @@ import { CategoryListComponent } from './category-list/category-list.component';
     ToastComponent,
     RecepyCardComponent,
     ItemListComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    LoadingComponent
   ]
 })
 export class SharedModule { }
