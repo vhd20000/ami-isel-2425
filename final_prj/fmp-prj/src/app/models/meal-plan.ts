@@ -9,7 +9,7 @@ export class MealPlan {
     }
 }
 
-class MealPlanEntry {
+export class MealPlanEntry {
     public date!: Timestamp;
     public recepies!: Recepy[];
 }
