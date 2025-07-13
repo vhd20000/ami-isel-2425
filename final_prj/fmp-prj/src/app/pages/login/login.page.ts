@@ -67,7 +67,6 @@ export class LoginPage implements OnInit {
       .then(
         res => {
           console.log("res [doLoginWithEmailAndPassword]: ", res);
-          // this.util.storeUserDataInCache(res.user);
           this.router.navigate([APP_MAIN_PAGE_ROUTE]);
         }, 
         err => {
