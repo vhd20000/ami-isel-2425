@@ -64,18 +64,16 @@ export class FireService {
   /**
    * FIREBASE STORAGE METHODS
    */
-  async uploadImage() {
-    const imagesRef = ref(this.storage, IMAGES_REF);
-    // const bytes = new Uint8Array([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x2c, 0x20, 0x77, 0x6f, 0x72, 0x6c, 0x64, 0x21]);
-    // uploadBytes(imagesRef, bytes).then((snapshot) => {
-    //   console.log('Uploaded an array!');
-    // });
+  uploadImage(blob: Blob) {
+    const imageUid = this.util.generateUniqueId();
+    const imagesRef = ref(this.storage, `${IMAGES_REF}/${imageUid}`);
+    return uploadBytes(imagesRef, blob).then(res => imageUid);
   }
 
-  async getImageURL() {
-    const imagesRef = ref(this.storage, IMAGES_REF);
-    // const imagePath = "";
-    // return await getDownloadURL(imagesRef, imagePath);
+  getImageURL(imageUid: string) {
+    const imagePath = `${IMAGES_REF}/${imageUid}`;
+    const imagesRef = ref(this.storage, imagePath);
+    return getDownloadURL(imagesRef);
   }
 
   // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
