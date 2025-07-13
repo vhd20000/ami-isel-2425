@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional, ViewChild } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { FireauthService } from '../../services/fireauth.service';
 import { Router } from '@angular/router';
 import { UtilityService } from 'src/app/services/utility.service';
-import { FireService } from 'src/app/services/fire.service';
 import { EMAIL_VALIDATION_PATTERN, ERROR_DISPLAY_TIMEOUT, FAILED_LOGIN_ERROR_MSG, INVALID_EMAIL_MSG, INVALID_PASSWORD_MSG, PASSWORD_MIN_LENGTH, REQUIRED_EMAIL_MSG, REQUIRED_PASSWORD_MSG } from '../auth.constants';
-import { Auth } from '@angular/fire/auth';
+import { Platform } from '@ionic/angular';
 
 const APP_MAIN_PAGE_ROUTE: string = "/tabs";
 const REGIST_PAGE_ROUTE: string = "/register";
@@ -37,8 +36,7 @@ export class LoginPage implements OnInit {
     private fireauthService: FireauthService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private util: UtilityService,
-    private afAuth: Auth
+    public util: UtilityService
   ) { }
 
   ngOnInit() {
