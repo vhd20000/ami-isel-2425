@@ -1,11 +1,11 @@
 <ion-content>
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button class="fab-btn-no-shadow" (click)="util.redirectTo(addRecepyFormPage)">
+    <ion-fab-button class="fab-btn-no-shadow" (click)="util.redirectTo(addRecepyFormRoutePath)">
       <ion-icon class="fab-icon-color" name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
-  <div class="recepy-book-info-container" *ngIf="recepyBook && recepyBook.length < 1">
+  <div class="recepy-book-info-container" *ngIf="!recepyBook || recepyBook.length < 1">
     <strong>Não tem receitas registadas ! 😱</strong>
     <p><i>Pode registar algumas através do botão '+'</i></p>
   </div>
@@ -38,10 +38,10 @@
       </ion-buttons>
     </ion-toolbar>
 
-    <ion-list>
+    <ion-list class="recepies-list">
       <ion-reorder-group [disabled]="!reorderEntries" (ionItemReorder)="util.handleReorder($any($event))">
         <ion-reorder *ngFor="let recepy of showRecepies">
-          <app-recepy-card [recepy]="recepy" [isReorderModeActive]="reorderEntries"></app-recepy-card>
+          <app-recepy-card [recepy]="recepy" [isReorderModeActive]="reorderEntries" (deleteElement)="deleteRecepyLocally(recepy)"></app-recepy-card>
         </ion-reorder>
       </ion-reorder-group>
     </ion-list>
