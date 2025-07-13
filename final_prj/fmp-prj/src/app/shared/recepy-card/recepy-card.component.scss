@@ -50,11 +50,20 @@ ion-fab {
         min-width: 0;
         
         ion-fab-button {
-            --background: var(--warning-color);
+            --background: var(--primary-color);
             --color: white;
-            width: 2.5rem;
-            height: 2.5rem;
-            margin-top: 1rem;
+            width: 2rem;
+            height: 2rem;
+            margin: 0 0.25rem;
+            margin-top: 0.25rem;
+        }
+
+        ion-fab-button.first-btn-in-list {
+            margin-top: 0.75rem !important;
+        }
+
+        ion-fab-button.delete-btn {
+            --background: var(--warning-color);
         }
     }
 }
