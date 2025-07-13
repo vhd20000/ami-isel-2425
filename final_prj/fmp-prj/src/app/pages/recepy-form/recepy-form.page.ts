@@ -1,12 +1,13 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { RecepyImage } from 'src/app/models/recepy';
+import { FireService } from 'src/app/services/fire.service';
 import { UtilityService } from 'src/app/services/utility.service';
 
 const NO_INPUT_CATEGORY_ERROR_MSG: string = "Por favor insira uma categoria.";
 const ADD_CATEGORY_ERROR_MSG: string = "Esta categoria já existe. Por favor, tente outra.";
-const ADD_CATEGORY_ERROR_TOAST_DURATION: number = 3000;
-
 const REQUIRED_FIELD_MSG: string = "Campo obrigatório";
+const ADD_CATEGORY_ERROR_TOAST_DURATION: number = 3000;
 const MIN_PREP_TIME_VALUE: number = 1;
 
 @Component({
@@ -42,16 +43,7 @@ export class RecepyFormPage implements OnInit {
     "Quisque ultricies euismod metus",
   ];
 
-  // public validation_messages = {
-  //   'name': [
-  //     { type: 'required', message: REQUIRED_FIELD_MSG },
-  //     { type: 'pattern', message: INVALID_EMAIL_MSG }
-  //   ],
-  //   'password': [
-  //     { type: 'required', message: REQUIRED_PASSWORD_MSG },
-  //     { type: 'minlength', message: INVALID_PASSWORD_MSG }
-  //   ]
-  // };
+  public image?: RecepyImage;
 
   public recepyForm: FormGroup = {} as FormGroup;
 
@@ -70,9 +62,9 @@ export class RecepyFormPage implements OnInit {
   };
 
   constructor(
-    // private fireauthService: FireauthService,
+    private fireService: FireService,
     private formBuilder: FormBuilder,
-    private util: UtilityService,
+    public util: UtilityService,
   ) { }
 
   ngOnInit() {
@@ -106,20 +98,34 @@ export class RecepyFormPage implements OnInit {
       categories: new FormControl([]),
       ingredients: new FormControl([]),
       steps: new FormControl([]),
-      image: new FormControl()
+      imageURL: new FormControl('')
     });
   }
 
   /**
    * PULBIC METHODS
    */
-  public tryAddRecepy(value: any) {
+  public async tryAddRecepy(value: any) {
     // this.util.openToast("A implementar ...", { position: ToastPosition.TOP });
     value.name = this.util.sanitizeString(value.name);
     value.categories = this.categories;
     value.ingredients = this.ingrdients;
     value.steps = this.steps;
+
+    // try upload image to firebase / wait for it to finish
+    if (this.image) {
+      const blob = this.image.blob;
+      const imageUid = await this.fireService.uploadImage(blob);
+      const url = await this.fireService.getImageURL(imageUid);
+      value.imageURL = url;
+    }
+    
+    // try upload form data to firebase
+    // ...
     console.log(value);
+
+    // redirect on success
+    // ...
   }
 
   public addCategory() {
@@ -140,6 +146,18 @@ export class RecepyFormPage implements OnInit {
 
   public clearCategories() {
     this.categories = [];
+  }
+
+  public addRecepyImage() {
+    this.util.takePicture()
+      .then(res => {
+        if (!res) {
+          this.image = undefined;
+          return;
+        }
+        this.image = res as RecepyImage;
+      })
+      .catch(err => this.util.openToast(err.toString()));
   }
 
 }

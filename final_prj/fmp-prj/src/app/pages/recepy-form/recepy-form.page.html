@@ -37,12 +37,12 @@
         </ion-col>
         
         <ion-col>
-          <ion-input 
-            label="image" 
-            label-placement="floating" 
-            fill="outline"
-            formControlName="image"
-          ></ion-input>
+          <ion-button *ngIf="!image" class="img-btn" size="large" (click)="addRecepyImage()">
+            <ion-icon slot="icon-only" name="add"></ion-icon>
+          </ion-button>
+          <div *ngIf="image" class="img-wrapper">
+            <img [src]="image.img" (click)="addRecepyImage()" >
+          </div>
         </ion-col>
       </ion-row>
 
