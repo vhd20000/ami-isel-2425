@@ -14,7 +14,7 @@ const UPLOAD_MEAL_PLAN_FAIL_MSG = "Ocorreu um erro ao gerar um novo plano.";
 const GENERATED_MEAL_PLAN_NOTIFICATION_TITLE = "Plano atualizado";
 const GENERATED_MEAL_PLAN_NOTIFICATION_BODY = "O seu novo plano de refeições semanal está pronto! Venha ver o que preparamos para si.";
 const LOADING_PLAN_MSG: string = "A carregar plano ...";
-const DEBUG_WAIT_TIME: number = 1000;
+const DEBUG_WAIT_TIME: number = 1000;  // 1s
 
 @Component({
   selector: 'app-meal-plan',

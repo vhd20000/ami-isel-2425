@@ -7,6 +7,7 @@ import { Auth } from '@angular/fire/auth';
 import { UtilityService } from '../services/utility.service';
 
 const LOGIN_PAGE_ROUTE = "/login";
+const DEBUG_WAIT_TIME: number = 2000; // 2s
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +47,7 @@ export class AuthGuard implements CanActivate {
      *  Scenarios where this apply - When user open the app 
      */
     return (async () => {
-        await this.util.delay(1500);  // 1 and a half seconds (500ms)
+        await this.util.delay(DEBUG_WAIT_TIME);
         
         if (this.afAuth.currentUser) {
           return true;
