@@ -8,7 +8,7 @@ export class Recepy {
     public ingredients?: string[];
     public steps?: string[];
     public imageId?: string;
-    public image?: string;
+    public imageURL?: string;
     public mealType?: string;
 }
 
