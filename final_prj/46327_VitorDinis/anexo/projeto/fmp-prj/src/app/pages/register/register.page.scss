@@ -1,0 +1,37 @@
+ion-toolbar {
+    --background: var(--primary-color);
+    --color: white;
+}
+
+.error-message {
+    color: var(--ion-color-danger);
+    font-size: 0.9rem;
+}
+
+.form-content {
+    padding: 1rem;
+}
+
+ion-title.page-title {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 2rem;
+}
+
+.form div.password-field {
+    margin: 1rem 0;
+}
+
+.error-message {
+    color: var(--ion-color-danger);
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+ion-img {
+    margin-right: 1rem;
+    width: 1rem;
+    height: auto;
+}

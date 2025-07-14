@@ -1,0 +1,46 @@
+.recepy-book-info-container {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.recepy-book-info-container strong {
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.recepy-book-info-container p {
+    font-size: 16px;
+    line-height: 22px;
+    color: #8c8c8c;
+    margin: 0;
+}
+
+.recepy-book-info-container a {
+    text-decoration: none;
+}
+
+ion-toolbar {
+    --padding-top: 5rem;
+    --color: var(--detail-color-1);
+}
+
+ion-list {
+    padding: 0;
+}
+
+ion-searchbar {
+    --box-shadow: none !important;
+    --color: var(--detail-color-1) !important;
+}
+
+ion-reorder.reorder-selected {
+    box-shadow: none !important;
+}
+
+ion-list.recepies-list {
+    margin-bottom: 4rem;
+}

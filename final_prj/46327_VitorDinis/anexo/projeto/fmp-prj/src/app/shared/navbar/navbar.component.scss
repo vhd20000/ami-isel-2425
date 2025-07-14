@@ -1,0 +1,41 @@
+.navbar {
+    --background: var(--ion-background-color, #fff);
+    padding-top: 1.25rem;
+}
+
+.side-menu {
+    --background: var(--primary-color-light);
+    color: black;
+}
+
+ion-menu-button {
+    $menu-button-color: var(--detail-color-1);
+    color: $menu-button-color;
+    --color-activated: $menu-button-color;
+    --color-focused: $menu-button-color;
+    scale: 125%;
+}
+
+ion-avatar {
+    width: 100% !important;  
+    height: 100% !important;  
+    max-width: 2.75rem !important;
+    max-height: 2.75rem !important;
+    margin: 0 0.5rem;
+}
+
+ion-icon {
+    fill: var(--detail-color-1);
+}
+
+.app-exit-button {
+    $exit-color: var(--warning-color); 
+    color: $exit-color;
+    --color-activated: $exit-color !important;
+    --color-focused: $exit-color !important;
+    --color-hover: $exit-color !important;
+    
+    ion-icon {
+        fill: $exit-color;
+    }
+}

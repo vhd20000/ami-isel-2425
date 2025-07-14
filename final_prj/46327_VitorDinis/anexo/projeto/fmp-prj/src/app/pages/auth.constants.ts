@@ -1,0 +1,10 @@
+export const REQUIRED_EMAIL_MSG: string = "Email obrigatório.";
+export const INVALID_EMAIL_MSG: string = "Por favor insira um email válido.";
+export const REQUIRED_PASSWORD_MSG: string = "Palavra-passe obrigatória.";
+export const INVALID_PASSWORD_MSG: string = "A palavra-passe tem de ter um mínimo de 5 caracteres.";
+export const REGIST_SUCCESS_MSG: string = "Conta criada com sucesso";
+export const FAILED_LOGIN_ERROR_MSG: string = "Palavra-passe e/ou email incorreto(s). Tente novamente.";
+export const FAILED_REGIST_ERROR_MSG: string = "Este utilizador já existe. Por favor, tente usar outro email.";
+export const EMAIL_VALIDATION_PATTERN: string = '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$';
+export const PASSWORD_MIN_LENGTH: number = 5;
+export const ERROR_DISPLAY_TIMEOUT: number = 5000;

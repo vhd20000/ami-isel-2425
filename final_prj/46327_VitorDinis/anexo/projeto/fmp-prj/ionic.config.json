@@ -1,0 +1,7 @@
+{
+  "name": "fmp-prj",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

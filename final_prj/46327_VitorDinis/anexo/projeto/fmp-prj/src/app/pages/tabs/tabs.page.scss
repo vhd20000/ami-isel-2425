@@ -1,0 +1,9 @@
+.tab-bar {
+    --background: var(--primary-color);
+}
+
+ion-tab-button {
+    --color: black;
+    --color-selected: white;
+    --ripple-color: var(--ion-color-primary);
+}

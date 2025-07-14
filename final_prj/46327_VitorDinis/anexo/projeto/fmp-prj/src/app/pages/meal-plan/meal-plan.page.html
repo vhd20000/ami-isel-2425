@@ -1,0 +1,21 @@
+<ion-content>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button class="fab-btn-no-shadow" (click)="tryUpdateMealPlan()">
+      <ion-icon class="fab-icon-color" name="pencil-sharp"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <app-calendar></app-calendar>
+
+  <div class="meal-plan-info-container" *ngIf="!mealPlan || mealPlan.plan.length < 1">
+    <strong>Sem plano para esta semana?</strong>
+    <p><i>Pode criar um através do botão ✏️</i></p>
+  </div>
+  
+  <div *ngIf="mealPlan && mealPlan.plan.length > 0">
+    <app-meal-plan-card *ngFor="let dayPlan of mealPlan.plan" 
+      [timestamp]="dayPlan.date" 
+      [recepies]="dayPlan.recepies"
+    ></app-meal-plan-card>
+  </div>
+</ion-content>

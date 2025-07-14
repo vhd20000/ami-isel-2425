@@ -1,0 +1,33 @@
+<ion-card>
+  <ion-card-content>
+    <ion-fab slot="fixed" vertical="top" horizontal="end" edge="true" *ngIf="!isReorderModeActive">
+      <ion-fab-button class="card-options-button fab-btn-no-shadow">
+        <ion-icon name="ellipsis-vertical"></ion-icon>
+      </ion-fab-button>
+
+      <ion-fab-list class="card-options-list" side="bottom">
+        <ion-fab-button class="fab-btn-no-shadow first-btn-in-list" (click)="editRecepyByIdHandler(recepy.id)">
+          <ion-icon name="pencil-sharp"></ion-icon>
+        </ion-fab-button>
+        
+        <ion-fab-button class="fab-btn-no-shadow delete-btn" (click)="tryDeleteRecepyById(recepy.id)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+    
+    <ion-item lines="none">
+      <ion-thumbnail class="recepy-img" slot="start">
+        <img alt="recepy" [src]="!recepy.imageURL || recepy.imageURL==='' ? recepyPic : recepy.imageURL" />
+      </ion-thumbnail>
+      <div>
+        <ion-title class="recepy-name"><b>{{ recepy.name }}</b></ion-title>
+        <ion-label class="recepy-info">Preparação: {{ recepy.prepTimeMins }} mins</ion-label>
+        <ion-label class="recepy-info">Porções: {{ recepy.servings }}</ion-label>
+      </div>
+      <ion-note class="sort-icon" slot="end" *ngIf="isReorderModeActive">
+        <ion-icon name="reorder-four"></ion-icon>
+      </ion-note>
+    </ion-item>
+  </ion-card-content>
+</ion-card>

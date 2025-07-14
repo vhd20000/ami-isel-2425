@@ -1,0 +1,49 @@
+.item-header-container {
+    padding: 0;
+}
+
+.item-list-container {
+    padding: 0;
+}
+
+.item-header-wrapper {
+    height: 3rem;
+}
+
+.item-list-btn {
+    --box-shadow: none !important;
+    --background: white;
+    color: var(--detail-color-1);
+    margin: 0;
+}
+
+.delete-btn {
+    color: var(--warning-color);
+}
+
+.item-list-label {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.item-label {
+    margin: 0;
+    --min-height: 2rem;
+    padding: 0.125rem 0;
+    
+    ul {
+        margin: 0;
+        padding-left: 1.5rem;
+    }
+}
+
+.item-entry-btn {
+    --background: white;
+    --color: var(--detail-color-1);
+    --box-shadow: none !important;
+}
+
+ion-item.reorder-selected {
+    box-shadow: none !important;
+}
